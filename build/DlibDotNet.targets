@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  
+  <PropertyGroup>
+    <DlibDotNet-Platform Condition="'$(Platform)' == 'Win32'">x86</DlibDotNet-Platform>
+    <DlibDotNet-Platform Condition="'$(Platform)' != 'Win32'">$(Platform)</DlibDotNet-Platform>
+
+    <DlibDotNetNativeDlls> $(MSBuildThisFileDirectory)..\..\runtimes\win10-$(DlibDotNet-Platform)\native\ </DlibDotNetNativeDlls>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- without conditions should that fit c++ uwp and netcore apps too ? -->
+    <Reference Include="$(MSBuildThisFileDirectory)..\..\lib\netstandard2.0\DlibDotNet.dll">
+      <Name>DlibDotNet</Name>
+      <RequiredTargetFramework>.NETStandard2.0</RequiredTargetFramework>
+      <SpecificVersion>false</SpecificVersion>
+      <Private>true</Private>
+    </Reference>
+
+    <ReferenceCopyLocalPaths  Include="$(DlibDotNetNativeDlls)DlibDotNet.Native.dll" />
+    <ReferenceCopyLocalPaths Include="$(DlibDotNetNativeDlls)DlibDotNet.Native.Dnn.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(DlibDotNetNativeDlls)\DlibDotNet.Native.dll">
+      <Link>DlibDotNet.Native.dll</Link>
+      <DeploymentContent>true</DeploymentContent>
+
+      <CopyToOutputDirectory>Allways</CopyToOutputDirectory>
+    </None>
+
+    <None Include="$(DlibDotNetNativeDlls)\DlibDotNet.Native.Dnn.dll">
+      <Link>DlibDotNet.Native.Dnn.dll</Link>
+      <DeploymentContent>true</DeploymentContent>
+
+      <CopyToOutputDirectory>Allways</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

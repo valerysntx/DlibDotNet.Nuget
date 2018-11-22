@@ -2,17 +2,20 @@
 	<PropertyGroup>
 		<DlibDotNetNativeDlls>$(MSBuildThisFileDirectory)\native</DlibDotNetNativeDlls>
 	</PropertyGroup>
+
 	<ItemGroup>
 		<None Include="$(DlibDotNetNativeDlls)\DlibDotNet.Native.dll">
 			<Link>DlibDotNet.Native.dll</Link>
 			<DeploymentContent>true</DeploymentContent>
+
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 		<None Include="$(DlibDotNetNativeDlls)\DlibDotNet.Native.Dnn.dll">
 			<Link>DlibDotNet.Native.Dnn.dll</Link>
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<DeploymentContent>true</DeploymentContent>
-            
+
 		</None>
 	</ItemGroup>
+
 </Project>

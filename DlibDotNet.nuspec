@@ -15,17 +15,28 @@
 Requirements: Visual C++ 2017 Redistributable Package</description>
     <releaseNotes></releaseNotes>
     <copyright>© Takuya Takeuchi 2018</copyright>
-    <tags>dlib .net machinelearning</tags>
+    <tags>dlib .net machinelearning native</tags>
     <serviceable>true</serviceable>
     <dependencies>
-      <group targetFramework=".NETStandard2.0" />
       <group targetFramework="native0.0" />
+      <group targetFramework=".NETStandard2.0" />
     </dependencies>
   </metadata>
   <files>
+
+    <!-- .targets -->
+    <file src="build\DlibDotNet.targets" target="build\native"/>
+
+
+    <!-- (all managed  .\lib\**\*.dll ) 
+      <file src="lib\**" target="lib\netstandard2.0" />
+    -->
+    
     <file src="build\DlibDotNet.props" target="build\DlibDotNet.props" />
-    <file src="lib\native\DlibDotNet.Native.dll" target="lib\native\DlibDotNet.Native.dll" />
-    <file src="lib\native\DlibDotNet.Native.Dnn.dll" target="lib\native\DlibDotNet.Native.Dnn.dll" />
-    <file src="lib\netstandard2.0\DlibDotNet.dll" target="lib\netstandard2.0\DlibDotNet.dll" />
+    
+    <file src="runtimes\win10-x64\lib\netstandard2.0\DlibDotNet.dll" target="lib\netstandard2.0\DlibDotNet.Native.dll" />
+
+    <file src="runtimes\win10-x64\native\DlibDotNet.Native.dll" target="native\DlibDotNet.Native.dll" />
+    <file src="runtimes\win10-x64\native\DlibDotNet.Native.Dnn.dll" target="native\DlibDotNet.Native.Dnn.dll" />
   </files>
 </package>
